@@ -9,3 +9,9 @@ broadband:
   internal: true
   service_provider: 'broadband_summary'
   name: 'Broadband Availability'
+
+council:
+  where: '/council/:post_code'
+  internal: true
+  service_provider: 'council'
+  name: 'Council'
