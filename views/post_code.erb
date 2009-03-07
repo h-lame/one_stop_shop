@@ -21,10 +21,7 @@
     
     <h2><a href="http://www.fixmystreet.com/?pc=<%= @post_code_as_param %>">Fix My Street</a></h2>
 
-    <form method="post" action="http://www.samknows.com/broadband/checker2.php?p=summary">
-    <input type="hidden" value="<%= @post_code_as_param %>" name="postcode"/>
-    <input type="submit" value="Broadband Summary"/>
-    </form>
+
 
     <form action="http://neighbourhood.statistics.gov.uk/dissemination/LeadAreaSearch.do" method="get" name="areaSearchFrm">
     <input type="hidden" value="7" name="a"/><input type="hidden" value="1" name="r"/><input type="hidden" value="1001" name="i"/>

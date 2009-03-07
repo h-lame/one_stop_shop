@@ -3,3 +3,9 @@ twfy_mp:
   internal: true
   service_provider: 'they_work_for_you'
   name: 'Your MP'
+
+broadband:
+  where: '/broadband/:post_code'
+  internal: true
+  service_provider: 'broadband_summary'
+  name: 'Broadband Availability'
