@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'lib/services'
 
 helpers do
   def urlify_post_code(post_code)
@@ -13,6 +14,10 @@ helpers do
   def valid_post_code?(post_code)
     # POST CODE validator via - http://snipplr.com/view/7990/validate-uk-postcode/
     post_code =~ /^([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]|[A-HK-Y][0-9]([0-9]|[ABEHMNPRV-Y]))|[0-9][A-HJKS-UW])\ [0-9][ABD-HJLNP-UW-Z]{2}|(GIR\ 0AA)|(SAN\ TA1)|(BFPO\ (C\/O\ )?[0-9]{1,4})|((ASCN|BBND|[BFS]IQQ|PCRN|STHL|TDCU|TKCA)\ 1ZZ))$/
+  end
+  
+  def paramify_post_code(post_code)
+    post_code.gsub(' ','').downcase
   end
   
   def are_we_sorry?
@@ -39,6 +44,7 @@ end
 get '/for/:post_code' do
   @post_code = deurlify_post_code(params[:post_code])
   if valid_post_code?(@post_code)
+    @post_code_as_param = paramify_post_code(@post_code)
     erb :post_code
   else
     redirect '/sorry'
@@ -48,4 +54,8 @@ end
 get '/sorry' do
   @sorry = true
   erb :index
+end
+
+Services.local_services.map do |service_id, service_obj|
+  load "./lib/#{service_obj['service_provider']}.rb"
 end

@@ -1,0 +1,37 @@
+<h2><a href="http://www.fixmystreet.com/?pc=<%= @post_code_as_param %>">Fix My Street</a></h2>
+
+<form method="post" action="http://www.samknows.com/broadband/checker2.php?p=summary">
+<input type="hidden" value="<%= @post_code_as_param %>" name="postcode"/>
+<input type="submit" value="Broadband Summary"/>
+</form>
+
+<form action="http://neighbourhood.statistics.gov.uk/dissemination/LeadAreaSearch.do" method="get" name="areaSearchFrm">
+<input type="hidden" value="7" name="a"/><input type="hidden" value="1" name="r"/><input type="hidden" value="1001" name="i"/>
+<input type="hidden" value="0" name="m"/><input type="hidden" value="1236425023781" name="s"/><input type="hidden" value="1" name="enc"/>
+<input type="hidden" value="<%= @post_code_as_param %>" maxlength="40" size="30" id="areaSearchText" name="areaSearchText"/>
+<input type="hidden" value="13" name="areaSearchType" id="L13" selected/>
+<button title="Search for statistics on an area" type="submit" name="searchAreas">Neighourhood Statistics (Gov UK)</button>
+</form>
+
+<h2><a href="http://theyworkforyou.com/mp/postcode?t=ch&pc=<%= @post_code_as_param %>">They Work For You</a></h2>
+
+<h2><a href="http://www.streetwire.org/spots.php?q=<%= @post_code_as_param %>">Street Wire</a></h2>
+
+<h3><a href="http://www.streetwire.org/spots.php?q=<%= @post_code_as_param %>&s=planning">Street Wire - Planning</a></h3>
+<h3><a href="http://www.streetwire.org/spots.php?q=<%= @post_code_as_param %>&s=news">Street Wire - News</a></h3>
+<h3><a href="http://www.streetwire.org/spots.php?q=<%= @post_code_as_param %>&s=event">Street Wire - Event</a></h3>
+<h3>... and more</h3>	
+
+<h2><a href="http://www.groupsnearyou.com/search/<%= @post_code_as_param %>">Groups Near You</a>
+
+<h2><a href="http://www.recyclenow.com/applications/recyclenow_08/banklocator/search_results.rm?place=<%= @post_code_as_param %>">Recycle Now</a></h2>
+
+<h2><a href="http://www.ofsted.gov.uk/oxcare_providers/postcode_search?type=8192|Secondary+schools|edu&register=&postcode=<%= @post_code_as_param %>&radius=8047">Ofsted Second School reports</a></h2>
+
+<br/>**************** NOT WORKING ***********************<br/>
+
+<form action="http://www.environment-agency.gov.uk/homeandleisure/floods/31618.aspx" method="post">
+	<input type="hidden" name="ctl00$ddlSearchOption" value="Postcode"/>
+	<input type="hidden" name="ctl00$txtTerm" value="<%= @post_code_as_param %>"/>
+	<input type="submit" value="Flood warnings">
+</form>
