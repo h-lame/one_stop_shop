@@ -15,3 +15,11 @@ council:
   internal: true
   service_provider: 'council'
   name: 'Council'
+
+council_tax:
+  where: '/council_tax/:council'
+  internal: true
+  service_provider: 'council_tax'
+  name: 'Council Tax'
+  requires: 'council'
+

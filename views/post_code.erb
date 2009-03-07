@@ -5,6 +5,11 @@
     <title>One Stop Shop :: Enter Your Postcode</title>
     <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
     <script charset="utf-8" language="javascript" type="text/javascript" src="/scripts/prototype.js"></script>
+    <script type="text/javascript">
+      function make_url(url, look_for, replace_with) {
+        url;
+      }
+    </script>
   </head>
   <body>
     <h1>One Stop Shop for <%= @post_code %></h1>
@@ -12,9 +17,17 @@
     <% Services.services.map do |service_id, service_obj| %>
       <div class="service" id="<%= service_id %>">
         <h2><%= service_obj['name'] %></h2>
-        <p id="<%= service_id %>_stuff" class="stuff"></p>
+        <p id="<%= service_id %>_stuff" class="stuff"><img src="/images/spinner.gif" width="24" height="24"/></p>
         <script type="text/javascript">
-          new Ajax.Updater('<%= service_id %>_stuff', '<%= Services.service_url(service_id, @post_code_as_param) %>', {method : 'get'});
+          <% if service_obj['requires'] %>
+            document.observe('requires:<%= service_obj['requires'] %>', function(evt){
+              new Ajax.Updater('<%= service_id %>_stuff', '<%= Services.service_url(service_id, @post_code_as_param) %>'.gsub(':<%= service_obj['requires'] %>', evt.memo), {method : 'get', evalScripts: true});
+            });
+          <% else %>
+            document.observe('dom:loaded', function(){
+              new Ajax.Updater('<%= service_id %>_stuff', '<%= Services.service_url(service_id, @post_code_as_param) %>', {method : 'get', evalScripts: true});
+            });
+          <% end %>
         </script>
       </div>
     <% end %>

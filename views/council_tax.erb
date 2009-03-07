@@ -1,0 +1,3 @@
+<p>For a Band D house in <%= params[:council] %> the yearly council tax was <span class="most_recent_council_tax">&pound;<%= @data.last[1] %></span> in <%= Date.parse(@data.last[0]).year %></p>
+<p>Below is a chart of the Band D council tax price from <%= @data.map{|d| Date.parse(d[0]).year}.min %> to <%= @data.map{|d| Date.parse(d[0]).year}.max %>.</p>
+<p><img src="<%= @gc.to_url %>" width="400" height="200"/></p>
