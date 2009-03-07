@@ -23,3 +23,9 @@ council_tax:
   name: 'Council Tax'
   requires: 'council'
 
+recycle_now:
+  where: '/recycle_now/:post_code'
+  internal: true
+  service_provider: 'recycle_now'
+  name: 'Recyclables'
+

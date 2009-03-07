@@ -1,0 +1,8 @@
+<p>You can recycle the following:</p>
+<dl>
+  <% @things.each do |type, subtypes| %>
+   <dt><%= type%></dt>
+   <% subtypes.each do |subtype|%><dd><%= subtype %></dd><% end %>
+  <% end %>
+</dl>
+<p><a href="http://www.recyclenow.com/applications/recyclenow_08/banklocator/search_results.rm?place=#{params[:post_code]}">Click here</a> to go to the <a href="http://www.recyclenow.com/">Recycle Now</a> website for more info.</p>
