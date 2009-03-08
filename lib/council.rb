@@ -32,7 +32,7 @@ get '/council/:post_code' do
   
   doc = Hpricot(open("http://www.writetothem.com/who?pc=#{params[:post_code]}"))
   
-  council_col = (doc/"table#repstable tr:nth-of-type(0) th").index {|e| e.inner_html =~ /Your (?:District )?Councillors/}
+  council_col = (doc/"table#repstable tr:nth-of-type(0) th").index((doc/"table#repstable tr:nth-of-type(0) th").select {|e| e.inner_html =~ /Your (?:District )?Councillors/})
   
   council_info_text = (doc/"table#repstable tr:nth-of-type(1) td:nth-of-type(#{council_col}) p").inner_html
   
