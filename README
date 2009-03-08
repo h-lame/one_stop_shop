@@ -1,0 +1,10 @@
+One Stop Shop
+=============
+
+A simple idea.  The internet knows a lot about your postcode.  However, you have to go to a bunch of separate websites to find that information out.  Wouldn't it be nice if there was one place that could give you all the basic info and also direct you to other places for further info?
+
+That's the idea behind One Stop Shop.  You put in your postcode and the system will run off and start asking all the services that it knows about to pull back some info about that postcode.  The services use APIs or scraping or whatever really to pull back some small chunk of HTML that gets injected into the page.
+
+The "clever" bit is that a service can say that it needs a different bit of data to do it's thing, and the system will only fire that service once that data is made available by another service.  For example, there is a service that can tell you what council you are in based on your postcode.  There is another service that can tell you the Council Tax for a Band D house in your council, but to do this it needs to know the council you are in, not the post code.  When the council service returns it fires an event saying that council data is available.  The council tax service waits until this event is fired and then starts doing its thing.
+
+This app was thought up and written as part of http://rewiredstate.org. 
